@@ -21,10 +21,30 @@ long lastMsg;
 
 int val;
 
+// Connect LEDs via 220R
+#define LED_RED     15
+#define LED_GREEN   12
+#define LED_BLUE    13
+
+
+
+
 HTTPClient http;
 
 
+
 void setup() {
+
+  pinMode(LED_RED, OUTPUT);
+  pinMode(LED_GREEN, OUTPUT);
+  pinMode(LED_BLUE, OUTPUT);
+
+  digitalWrite(LED_RED, 0);
+  digitalWrite(LED_GREEN, 1);
+  digitalWrite(LED_BLUE, 0);
+
+    
+  
   Serial.begin(115200);
   val = analogRead(A0);
   //val = map(val, 0, 1023, 0, 5000);
@@ -74,10 +94,18 @@ void setup() {
        Serial.println(httpCode);
        String response = http.getString();
        Serial.println(response);
+         digitalWrite(LED_RED, 0);
+         digitalWrite(LED_GREEN, 0);
+         digitalWrite(LED_BLUE, 1);
     }
     else
     {
        Serial.println("Error in HTTP request");
+       
+       digitalWrite(LED_RED, 1);
+       digitalWrite(LED_GREEN, 0);
+       digitalWrite(LED_BLUE, 0);
+       
     }
      
     http.end();
@@ -85,6 +113,13 @@ void setup() {
   }
 
   delay(2000);
+
+
+  digitalWrite(LED_RED, 0);
+  digitalWrite(LED_GREEN, 0);
+  digitalWrite(LED_BLUE, 0);
+
+  
   
   // Sleep
   Serial.println("Entering sleep mode");
