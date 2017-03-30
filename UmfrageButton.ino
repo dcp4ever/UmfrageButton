@@ -6,11 +6,11 @@
 
 
 
-//const char* ssid = "FRITZ!Box 7312";
-//const char* password = "88767327694885648772";
+const char* ssid = "FRITZ!Box 7312";
+const char* password = "88767327694885648772";
 
-const char* ssid = "TestWLAN-doNotConnect";
-const char* password = "NBSWLAN2017";
+//const char* ssid = "TestWLAN-doNotConnect";
+//const char* password = "NBSWLAN2017";
 
 #define BUFFER_SIZE 100
 
@@ -22,9 +22,9 @@ long lastMsg;
 int val;
 
 // Connect LEDs via 220R
-#define LED_RED     15
-#define LED_GREEN   12
-#define LED_BLUE    13
+#define LED_RED     12
+#define LED_GREEN   13
+#define LED_BLUE    14
 
 
 
