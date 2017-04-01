@@ -45,29 +45,29 @@ void setup() {
 
     
   
-  Serial.begin(115200);
+ // Serial.begin(115200);
   val = analogRead(A0);
   //val = map(val, 0, 1023, 0, 5000);
-  Serial.print("ADC Value:");
-  Serial.println(val);
+ // Serial.print("ADC Value:");
+ // Serial.println(val);
 
 
-  Serial.println("Booting");
+ // Serial.println("Booting");
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   while (WiFi.waitForConnectResult() != WL_CONNECTED) {
-    Serial.println("Connection Failed! Rebooting...");
+ //   Serial.println("Connection Failed! Rebooting...");
     delay(5000);
     ESP.restart();
   }
 
-  Serial.println("Ready");
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
+ // Serial.println("Ready");
+ // Serial.print("IP address: ");
+ // Serial.println(WiFi.localIP());
 
   
   if (WiFi.status() == WL_CONNECTED) {
-    Serial.print(" Http Request...");
+   // Serial.print(" Http Request...");
   
     if(val>178&&val<183)  
     {
@@ -90,17 +90,17 @@ void setup() {
     int httpCode = http.GET();
     if(httpCode == HTTP_CODE_OK)
     {
-       Serial.print("HTTP response code ");
-       Serial.println(httpCode);
+      // Serial.print("HTTP response code ");
+      // Serial.println(httpCode);
        String response = http.getString();
-       Serial.println(response);
+      // Serial.println(response);
          digitalWrite(LED_RED, 0);
          digitalWrite(LED_GREEN, 0);
          digitalWrite(LED_BLUE, 1);
     }
     else
     {
-       Serial.println("Error in HTTP request");
+      // Serial.println("Error in HTTP request");
        
        digitalWrite(LED_RED, 1);
        digitalWrite(LED_GREEN, 0);
@@ -109,7 +109,7 @@ void setup() {
     }
      
     http.end();
-    Serial.println("DONE");
+    //Serial.println("DONE");
   }
 
   delay(2000);
@@ -122,9 +122,9 @@ void setup() {
   
   
   // Sleep
-  Serial.println("Entering sleep mode");
+ // Serial.println("Entering sleep mode");
   ESP.deepSleep(0);
-  delay(300);
+  delay(800);
 
 }
 
